@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ANIMALS } from "@frontendmasters/pet";
 import useDropdown from "./useDropdown";
+import { ToastContainer, toast } from "react-toastify";
 
 const SearchParamas = () => {
   const [location, setLocation] = useState("Seattle, WA");
@@ -24,7 +25,15 @@ const SearchParamas = () => {
         </label>
         <AnimalDropdown />
         <BreedDropdown />
-        <button>Submit</button>
+        <button
+          onClick={(e) => {
+            e.preventDefault();
+            console.log("here");
+            toast("success", "Hello");
+          }}
+        >
+          Submit
+        </button>
       </form>
     </div>
   );
