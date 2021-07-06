@@ -7,7 +7,8 @@
     "format": "prettier \"src/**/*.{js, html, css}\" --write",
     "lint": "eslint \"src/**/*.{js, jsx}\" --quiet",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "parcel src/index.html"
+    "dev": "parcel src/index.html",
+    "dev:mock": "cross-env PET_MOCK=mock npm run dev"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   "homepage": "https://github.com/abbasihsn/front-end-master#readme",
   "devDependencies": {
     "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.3",
     "eslint": "^7.29.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.23.4",
@@ -37,5 +39,8 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-toastify": "^7.0.4"
-  }
+  },
+  "browserslist": [
+    "last 2 Chrome versions"
+  ]
 }
