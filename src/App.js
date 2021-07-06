@@ -1,9 +1,11 @@
 import React from "react";
 import { render } from "react-dom";
 import SearchParamas from "./SearchParams";
+import { Link, Router } from "@reach/router";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Details from "./Details";
 
 const App = () => {
   const notify = () => toast("Wow so easy!");
@@ -28,8 +30,13 @@ const App = () => {
   // ]);
   return (
     <div id="sth-important">
-      <h1>Adopt Me!</h1>
-      <SearchParamas />
+      <header>
+        <Link to="/">Adopt Me!</Link>
+      </header>
+      <Router>
+        <SearchParamas path="/" />
+        <Details path="/details/:id" />
+      </Router>
       <ToastContainer />
     </div>
   );
