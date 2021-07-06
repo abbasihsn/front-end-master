@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
+    <script>
+      // See https://github.com/facebook/react/issues/20829#issuecomment-802088260
+      if (!crossOriginIsolated) SharedArrayBuffer = ArrayBuffer;
+    </script>
     <div id="root">Not rendered</div>
     <script src="./App.js"></script>
   </body>
