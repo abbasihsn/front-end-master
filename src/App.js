@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { render } from "react-dom";
 import SearchParamas from "./SearchParams";
 import { Link, Router } from "@reach/router";
@@ -6,8 +6,10 @@ import { Link, Router } from "@reach/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Details from "./Details";
+import ThemeContext from "./ThemeContext";
 
 const App = () => {
+  const themeHook = useState('peru');
   const notify = () => toast("Wow so easy!");
   // return React.createElement("div", { id: "sth-important" }, [
   //   // can be array or one simple element!
@@ -29,7 +31,8 @@ const App = () => {
   //   }),
   // ]);
   return (
-    <div id="sth-important">
+    <ThemeContext.Provider value={themeHook}>
+      <div id="sth-important">
       <header>
         <Link to="/">Adopt Me!</Link>
       </header>
@@ -39,6 +42,7 @@ const App = () => {
       </Router>
       <ToastContainer />
     </div>
+    </ThemeContext.Provider>
   );
 };
 

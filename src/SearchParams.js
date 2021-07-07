@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext} from "react";
 import pet, { ANIMALS } from "@frontendmasters/pet";
 import useDropdown from "./useDropdown";
 import { ToastContainer, toast } from "react-toastify";
 import { async } from "q";
 import Result from "./Result";
+import ThemeContext from "./ThemeContext";
 
 const SearchParamas = () => {
   const [location, setLocation] = useState("Seattle, WA");
@@ -11,6 +12,7 @@ const SearchParamas = () => {
   const [animal, AnimalDropdown] = useDropdown("Animal", "dog", ANIMALS);
   const [breed, BreedDropdown, setBreed] = useDropdown("Breed", "", breeds);
   const [pets, setPets] = useState([]);
+  const [theme, setTheme] = useContext(ThemeContext);
 
   async function requestPets() {
     const { animals } = await pet.animals({
@@ -55,12 +57,22 @@ const SearchParamas = () => {
         </label>
         <AnimalDropdown />
         <BreedDropdown />
+        <label htmlFor="theme">
+          Theme
+          <select value={theme} onChange={e=>setTheme(e.target.value)} onBlur={e=>setTheme(e.target.value)}>
+            <option value="peru">Peru</option>
+            <option value="blue">Blue</option>
+            <option value="purple">Purple</option>
+            <option value="Red">Red</option>
+          </select>
+        </label>
         <button
         // onClick={(e) => {
         //   e.preventDefault();
         //   console.log("here");
         //   toast("success", "Hello");
         // }}
+        style={{backgroundColor:theme}}
         >
           Submit
         </button>
