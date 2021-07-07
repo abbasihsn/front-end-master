@@ -10,7 +10,7 @@ class Carousel extends React.Component {
     console.log("here");
     let photos = ["http://placecorgi.com/600/600"];
     if (media.length) {
-      console.log("medial length: " + media.length);
+      // console.log("medial length: " + media.length);
       photos = media.map(({ large }) => large);
     }
 
@@ -31,7 +31,7 @@ class Carousel extends React.Component {
         <img src={photos[active]} alt="animal" />
         <div className="carousel-smaller">
           {photos.map((photo, index) => {
-            <img
+            return (<img
               key={photo}
               onClick={this.handleIndexClick}
               //   onKeyUp={this.handleIndexClick}
@@ -39,7 +39,7 @@ class Carousel extends React.Component {
               src={photo}
               className={index === active ? "active" : ""}
               alt="animal thumbnail"
-            />;
+            />)
           })}
         </div>
       </div>
